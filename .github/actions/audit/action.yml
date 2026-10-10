@@ -1,9 +1,8 @@
 name: Audit casks and formulae
-description: brew style and brew audit (online) on every cask and formula of this tap; formulae are installed and tested too
+description: brew style and brew audit (online) on every cask and formula of this tap; formulae are installed and tested too. Needs setup-homebrew to have run first.
 runs:
   using: composite
   steps:
-    - uses: Homebrew/actions/setup-homebrew@fccef3b26268fc4a788fd7ad7c189f3a105cbf13 # main, 2026-10-10
     - shell: bash
       run: |
         brew style ipsupport-llc/tap

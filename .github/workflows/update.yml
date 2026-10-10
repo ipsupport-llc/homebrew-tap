@@ -21,6 +21,10 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+      # Before the update, never after it: setup-homebrew empties the
+      # workspace and force-checks out the commit that triggered the run,
+      # which threw away every bump the updater had just made.
+      - uses: Homebrew/actions/setup-homebrew@fccef3b26268fc4a788fd7ad7c189f3a105cbf13 # main, 2026-10-10
       - name: Update
         id: update
         env:
