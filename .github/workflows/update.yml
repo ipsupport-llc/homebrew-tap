@@ -52,9 +52,12 @@ jobs:
           git add Casks Formula
           git commit -qm "$(printf 'Update casks\n\n%s' "$CHANGED")"
           # Another push may land meanwhile: replay this commit on top of it.
+          # A failed pull must not end the step (bash -e) before the next
+          # attempt; a conflicted rebase is undone and left to the next run.
           for attempt in 1 2 3; do
             git push "$remote" HEAD:main && exit 0
+            [ "$attempt" -eq 3 ] && break
             sleep $((attempt * 5))
-            git pull --rebase -q "$remote" main
+            git pull --rebase -q "$remote" main || git rebase --abort || true
           done
           exit 1
