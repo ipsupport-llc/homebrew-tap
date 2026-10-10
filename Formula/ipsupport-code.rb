@@ -3,6 +3,11 @@ class IpsupportCode < Formula
   homepage "https://github.com/ipsupport-llc/ipsupport-code"
   license "MIT"
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   on_macos do
     on_arm do
       url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.62.21/ipsupport-code_v0.62.21_darwin-arm64.tar.gz"
@@ -23,11 +28,6 @@ class IpsupportCode < Formula
       url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.62.21/ipsupport-code_v0.62.21_linux-amd64.tar.gz"
       sha256 "a7a3e3d5542867a279216f805b659e0dbfc5ae67662b2ea372c4ca199e99b710"
     end
-  end
-
-  livecheck do
-    url :stable
-    strategy :github_latest
   end
 
   def install
