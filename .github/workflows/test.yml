@@ -11,3 +11,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/audit
+
+  # The formula's four url+sha256 pairs, each installed where it is used:
+  # the audit above only runs on Apple Silicon.
+  formula:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@fccef3b26268fc4a788fd7ad7c189f3a105cbf13 # main, 2026-10-10
+      - name: Install and test
+        run: |
+          for formula in Formula/*.rb; do
+            name="ipsupport-llc/tap/$(basename "$formula" .rb)"
+            brew install "$name"
+            brew test "$name"
+          done
+          brew install ipsupport-llc/tap/ipco # the alias resolves
+          ipco -version
