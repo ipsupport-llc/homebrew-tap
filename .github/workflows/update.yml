@@ -1,0 +1,45 @@
+name: Update casks
+
+# Moves every cask to its product's latest stable release (see
+# scripts/update-casks.sh). Runs on a schedule, so a product's release
+# workflow needs no token for this repository; run it by hand to pick up
+# a release right away.
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-casks
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update
+        id: update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "changed<<EOF"
+            ./scripts/update-casks.sh
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+      - name: Audit
+        if: steps.update.outputs.changed != ''
+        uses: ./.github/actions/audit
+      - name: Commit
+        if: steps.update.outputs.changed != ''
+        env:
+          CHANGED: ${{ steps.update.outputs.changed }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -qam "$(printf 'Update casks\n\n%s' "$CHANGED")"
+          git push origin HEAD:main

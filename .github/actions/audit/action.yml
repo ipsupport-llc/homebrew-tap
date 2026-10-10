@@ -1,0 +1,12 @@
+name: Audit casks
+description: brew style and brew audit (online) on every cask of this tap
+runs:
+  using: composite
+  steps:
+    - uses: Homebrew/actions/setup-homebrew@main
+    - shell: bash
+      run: |
+        brew style ipsupport-llc/tap
+        for cask in Casks/*.rb; do
+          brew audit --cask --online --strict "ipsupport-llc/tap/$(basename "$cask" .rb)"
+        done
