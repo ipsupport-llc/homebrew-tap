@@ -32,3 +32,5 @@ jobs:
           done
           brew install ipsupport-llc/tap/ipco # the alias resolves
           ipco -version
+          # brew owns the install: update must point at brew, not replace it
+          ipco update | tee /dev/stderr | grep -q "installed with Homebrew"
