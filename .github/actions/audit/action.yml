@@ -3,7 +3,7 @@ description: brew style and brew audit (online) on every cask of this tap
 runs:
   using: composite
   steps:
-    - uses: Homebrew/actions/setup-homebrew@main
+    - uses: Homebrew/actions/setup-homebrew@fccef3b26268fc4a788fd7ad7c189f3a105cbf13 # main, 2026-10-10
     - shell: bash
       run: |
         brew style ipsupport-llc/tap

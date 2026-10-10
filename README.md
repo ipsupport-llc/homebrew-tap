@@ -15,8 +15,9 @@ settings, chats and runtime; your models folder is never touched.
 
 ## Maintenance
 
-Casks follow each product's latest stable release on their own:
+Casks follow their product's latest stable release on their own:
 [Update casks](.github/workflows/update.yml) runs every three hours (or by
 hand) and commits the new version and checksum. Pre-releases are skipped.
-A new product is a cask or formula here plus a line in
-[scripts/update-casks.sh](scripts/update-casks.sh).
+A new cask is a file here plus a line in
+[scripts/update-casks.sh](scripts/update-casks.sh); a formula will need
+its own update step.

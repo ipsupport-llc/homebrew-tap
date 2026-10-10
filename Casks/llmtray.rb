@@ -25,6 +25,7 @@ cask "llmtray" do
     "~/Library/Application Support/LLMTray",
     "~/Library/Caches/us.ipsupport.llmtray",
     "~/Library/HTTPStorages/us.ipsupport.llmtray",
+    "~/Library/HTTPStorages/us.ipsupport.llmtray.binarycookies",
     "~/Library/Preferences/us.ipsupport.llmtray.plist",
     "~/Library/Saved Application State/us.ipsupport.llmtray.savedState",
   ]
