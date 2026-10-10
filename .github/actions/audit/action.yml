@@ -1,5 +1,5 @@
-name: Audit casks
-description: brew style and brew audit (online) on every cask of this tap
+name: Audit casks and formulae
+description: brew style and brew audit (online) on every cask and formula of this tap; formulae are installed and tested too
 runs:
   using: composite
   steps:
@@ -9,4 +9,10 @@ runs:
         brew style ipsupport-llc/tap
         for cask in Casks/*.rb; do
           brew audit --cask --online --strict "ipsupport-llc/tap/$(basename "$cask" .rb)"
+        done
+        for formula in Formula/*.rb; do
+          name="ipsupport-llc/tap/$(basename "$formula" .rb)"
+          brew audit --formula --online --strict "$name"
+          brew install "$name"
+          brew test "$name"
         done
