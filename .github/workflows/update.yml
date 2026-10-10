@@ -42,15 +42,19 @@ jobs:
         if: steps.update.outputs.changed != ''
         env:
           CHANGED: ${{ steps.update.outputs.changed }}
+          GH_TOKEN: ${{ github.token }}
         run: |
+          # setup-homebrew re-creates the checkout without the credentials
+          # actions/checkout left in it, so push with the token explicitly.
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Casks Formula
           git commit -qm "$(printf 'Update casks\n\n%s' "$CHANGED")"
           # Another push may land meanwhile: replay this commit on top of it.
           for attempt in 1 2 3; do
-            git push origin HEAD:main && exit 0
+            git push "$remote" HEAD:main && exit 0
             sleep $((attempt * 5))
-            git pull --rebase -q origin main
+            git pull --rebase -q "$remote" main
           done
           exit 1
