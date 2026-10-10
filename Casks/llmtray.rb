@@ -15,7 +15,7 @@ cask "llmtray" do
   auto_updates true
   conflicts_with cask: "llmtray-full"
   depends_on arch: :arm64
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "LLMTray.app"
 
