@@ -1,6 +1,6 @@
 cask "llmtray" do
-  version "0.9.0"
-  sha256 "959b68585db4980098b733f84e67d7853d53757d20e3cce4ed7ae17aaf0c5668"
+  version "0.9.1"
+  sha256 "4b41391c173f41e1ea532ff7cf79f78e72e6273974e1c9ec73d8e737654d5c1b"
 
   url "https://github.com/ipsupport-llc/llmtray/releases/download/v#{version}/LLMTray.dmg"
   name "LLMTray"
