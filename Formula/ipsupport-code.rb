@@ -10,23 +10,23 @@ class IpsupportCode < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.73.0/ipsupport-code_v0.73.0_darwin-arm64.tar.gz"
-      sha256 "aab042203ffd11563ecbb81338260fc6928a6bf29678de141e206bf5983c691c"
+      url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.74.0/ipsupport-code_v0.74.0_darwin-arm64.tar.gz"
+      sha256 "8c1b0e745157fa35eda9842a83c8e5cec289781b9c8ecfa0806a088b235f9821"
     end
     on_intel do
-      url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.73.0/ipsupport-code_v0.73.0_darwin-amd64.tar.gz"
-      sha256 "44a98286a746c8ea68c31932240de323e796bd55840ddae1e043004d7ca7aea2"
+      url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.74.0/ipsupport-code_v0.74.0_darwin-amd64.tar.gz"
+      sha256 "8888694e35b2850628fb0db9beebe23d7a0762438f01601e292f0218cd8aa01d"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.73.0/ipsupport-code_v0.73.0_linux-arm64.tar.gz"
-      sha256 "0b2fedb9f9ea1cf1b12458072e9c8d344e01af289691c611c093ec7d7adca14e"
+      url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.74.0/ipsupport-code_v0.74.0_linux-arm64.tar.gz"
+      sha256 "cd71206f121315c3f5a7665035c22b496acccdbc302e2a1527412ea3d42e4ff2"
     end
     on_intel do
-      url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.73.0/ipsupport-code_v0.73.0_linux-amd64.tar.gz"
-      sha256 "53efba253b37b3bdccf78ebd26678acadee6747fff70ad92fcbf476cb9251807"
+      url "https://github.com/ipsupport-llc/ipsupport-code/releases/download/v0.74.0/ipsupport-code_v0.74.0_linux-amd64.tar.gz"
+      sha256 "ef3f00fa51564b1921a2d9a15787497ff8f3a2be2f4caac4c2846cdb3ff91766"
     end
   end
 
